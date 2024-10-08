@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Spam Classification Results</title>
+    <style>
+      /* General Styling */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        color: #2b5876;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+      }
+
+      h2 {
+        color: #2b5876;
+        font-size: 1.5rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 20px;
+      }
+
+      /* Table Styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 40px;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #51c3c7;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #eaeaea;
+      }
+
+      /* Button Styling */
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #2b5876;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: #1f4460;
+      }
+
+      /* Image Styling */
+      img {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Email Spam Classification Results</h1>
+
+    <h2>Dataset Preview:</h2>
+    {{ dataset_head|safe }}
+
+    <h2>Dataset Information:</h2>
+    <p><strong>Shape:</strong> {{ dataset_shape }}</p>
+
+    <h2>Dataset Description:</h2>
+    {{ dataset_description|safe }}
+
+    <h2>Model Performance Summary:</h2>
+    <table>
+      <tr>
+        <th>Model</th>
+        <th>Accuracy (%)</th>
+        <th>Precision (%)</th>
+        <th>Recall (%)</th>
+        <th>F1 Score (%)</th>
+      </tr>
+      <tr>
+        <td>Logistic Regression</td>
+        <td>{{ logistic_accuracy }}</td>
+        <td>{{ logistic_precision }}</td>
+        <td>{{ logistic_recall }}</td>
+        <td>{{ logistic_f1 }}</td>
+      </tr>
+      <tr>
+        <td>Naive Bayes</td>
+        <td>{{ naive_bayes_accuracy }}</td>
+        <td>{{ naive_bayes_precision }}</td>
+        <td>{{ naive_bayes_recall }}</td>
+        <td>{{ naive_bayes_f1 }}</td>
+      </tr>
+      <tr>
+        <td>K-Nearest Neighbors</td>
+        <td>{{ knn_accuracy }}</td>
+        <td>{{ knn_precision }}</td>
+        <td>{{ knn_recall }}</td>
+        <td>{{ knn_f1 }}</td>
+      </tr>
+      <tr>
+        <td>Decision Tree</td>
+        <td>{{ decision_tree_accuracy }}</td>
+        <td>{{ decision_tree_precision }}</td>
+        <td>{{ decision_tree_recall }}</td>
+        <td>{{ decision_tree_f1 }}</td>
+      </tr>
+    </table>
+
+    <h2>Model Accuracy Distribution:</h2>
+    <img
+      src="data:image/png;base64,{{ plot_url }}"
+      alt="Accuracy Distribution Pie Chart"
+    />
+
+    <a href="#" class="btn">Download Full Report</a>
+  </body>
+</html>
